@@ -30,14 +30,12 @@ def density_index(X, k=None):
 
 
 # get genes
-os.chdir("../../data/processed/")
-with open("greenleaf_scRNA_combined_expressed_genes.txt", "r") as f:
+with open("../../data/processed/greenleaf_scRNA_combined_expressed_genes.txt", "r") as f:
     genes = [g.strip("\n") for g in f.readlines()]
 f.close()
 
 # load the normalized raw data
-fname = "greenleaf_scRNA_combined_norm.mtx"
-X = mmread("greenleaf_scRNA_combined_norm.mtx")
+X = mmread("../../data/processed/greenleaf_scRNA_combined_norm.mtx")
 X = csr_matrix(X)  # make csr
 # get gene names
 with open("greenleaf_scRNA_combined_genes.txt", "r") as f:
@@ -50,9 +48,6 @@ f.close()
 exp_idx = [genes.index(i) for i in exp_genes]  # get indices of expressed genes
 X = X[:, exp_idx]  # subset expressed genes
 genes = exp_genes  # genes is expressed genes
-
-# set directory for results
-os.chdir("../../results/evaluate_feature_selection")
 
 # use scanpy to get seurat v3 flavoured features
 adata = AnnData(X)

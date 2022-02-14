@@ -14,5 +14,5 @@ data <- FindSpatiallyVariableFeatures(
 var <- SpatiallyVariableFeatures(data)
 
 # write to list
-lapply(var, write, "../results/spatially_variable_features_Seurat.txt",
+lapply(var, write, "spatially_variable_features_Seurat.txt",
        append=TRUE)

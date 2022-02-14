@@ -37,16 +37,13 @@ def binarize(X, t):
 # set working directory
 os.chdir("../data")
 # load ATAC-matrix
-X = load_sparse_h5("scATAC", "./interim/greenleaf_scATAC_peaks_filtered.h5")
+X = load_sparse_h5("scATAC", "greenleaf_scATAC_peaks_filtered.h5")
 X = binarize(X, 0)  # binarize the matrix
 
 # load the peak indices
-with open("../interim/greenleaf_scATAC_peaks_filtered.txt", "r") as f:
+with open("greenleaf_scATAC_peaks_filtered.txt", "r") as f:
     peaks = [g.strip("\n") for g in f.readlines()]
 f.close()
-
-# change to results directory
-os.chdir("../../results/evaluate_feature_selection")
 
 # compute p-value per genes
 KS_per_gene = pvals_per_gene(escores, pscores).sort_values(by="q")
