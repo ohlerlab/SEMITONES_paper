@@ -1,3 +1,5 @@
+### submitted to an HPC compute node requesting a single 3.20GHz core###
+
 import os
 import time
 import numpy as np
