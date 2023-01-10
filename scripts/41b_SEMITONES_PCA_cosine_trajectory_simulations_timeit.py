@@ -74,14 +74,6 @@ for i in range(len(n_cells)):  # for each dataset
         # get times with permutation scoring
         times_with_p[i][j] = (time.time() - time_start)
 
-        # save the enrichment scores
-        savename = prefix + "_paths_SEMITONES_PCA_cosine.txt"
-        escores.to_csv(savename, sep="\t")
-
-        # save the permutation scores
-        savename = prefix + "_paths_SEMITONES_PCA_cosine_pscores.txt"
-        pscores.to_csv(savename, sep="\t")
-
 # save the times for enrichment scoring
 pd.DataFrame(times).to_csv("paths_SEMITONES_PCA_cosine_times.txt", sep="\t")
 # save the permutation enrichment scores
